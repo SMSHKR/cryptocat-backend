@@ -1,12 +1,22 @@
 version: '3.4'
 
 services:
-  cryptocatbackend:
-    image: cryptocatbackend
+  cryptocat-backend:
+    image: cryptocat-backend
     build:
       context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
+    networks:
+      - sub-etha
+  cryptocat-frontend:
+    image: cryptocat-frontend
+    build: ../cryptocat-frontend
+    networks:
+      - sub-etha
     ports:
       - 80:80
+
+networks:
+  sub-etha:
