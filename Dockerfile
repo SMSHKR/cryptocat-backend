@@ -1,5 +1,6 @@
-FROM node:14-alpine
+FROM node:14-alpine AS node
 ENV NODE_ENV=production
+ENV PORT=80
 WORKDIR /usr/src/app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install nodemon -g
